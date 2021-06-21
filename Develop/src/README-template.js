@@ -1,17 +1,31 @@
-module.exports = projectData => {
-    console.log(projectData);
+const answer = require('../index');
 
-    const { title, description, ToC, instilation, usage } = templateData;
+// TODO: Create a function to generate markdown for README
+function generateMarkdown(answer) {
 
     return `
-    #${templateData.title}
+    #Title
+    ${answer.title}
 
-    ##${description}
+    ##Description
+    ${answer.description}
 
-    ##${ToC}
+    ##Table of Contents
+    ${answer.ToC}
     
-    ##${instilation}
+    ##How To Install
+    ${answer.instilation}
     
-    ##${usage}
+    ##Usage
+    ${answer.usage}
     `;
 };
+
+module.exports = generateMarkdown;
+/*
+function generateMarkdown(data) {
+    return `# ${data.title}
+  
+  `;
+  }
+  */

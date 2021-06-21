@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require("inquirer");
-const generatePage = require('./src/README-template')
+//const generateMarkdown = require('./src/README-template')
+//const { writeFile } = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = () => {
@@ -72,28 +73,54 @@ const questions = () => {
             }
         }
     ])
+    .then(({
+        title,
+        description,
+        ToC,
+        instilation,
+        usage
+    })=> {
+        const template =
+        `
+    #Title:
+    ${title}
+
+    ##Description:
+    ${description}
+
+    ##Table of Contents:
+    ${ToC}
+    
+    ##How To Install:
+    ${instilation}
+    
+    ##Usage:
+    ${usage}
+    `
+
+    generateREADME(title, template);
+    })
+
+    function generateREADME(fileName, data) {
+        fs.writeFile(`./README.md`, data, (err)=>{
+            if(err) {
+                console.log(err)
+            } else {
+                console.log('Your README.md has been generated!')
+            }
+        })
+    }
 }
 
-const promptQuests = projectData => {}
+questions();
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
+/*
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+
+}
 
 // Function call to initialize app
 init();
 
-
-questions()
-    .then(promptQuests)
-    .then(projectData => {
-        const pageREADME = generatePage(projectData);
-
-        fs.writeFile('./README.md', pageREADME, err => {
-            if (err) throw new Error(err);
-
-            console.log('README created! You can find the README.md in this directory');
-        });
-    });
+*/
