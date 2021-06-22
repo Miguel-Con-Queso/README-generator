@@ -18,6 +18,12 @@ function generateMarkdown(answer) {
     
     ##Usage
     ${answer.usage}
+
+    ##Contribution Guidelines
+    ${answer.contributions}
+
+    ##How to Test
+    ${answer.testing}
     `;
 };
 

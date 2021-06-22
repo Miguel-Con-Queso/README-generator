@@ -5,7 +5,7 @@ const inquirer = require("inquirer");
 //const { writeFile } = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
-const questions = () => {
+const questions = (chosenLicense) => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -18,6 +18,34 @@ const questions = () => {
                     console.log('Please enter a project title');
                     return false;
                 }
+            }
+        },
+        {
+            type: 'checkbox',
+            name: 'license',
+            message: 'What license does your project use?',
+            choices: ['None', 'Apache 2.0', 'MIT', 'GNU GPL v3'],
+            validate: licenseInput = (chosenLicense) => {
+                if (licenseInput) {
+                    if (licenseInput.value === 'None') {
+                        return true;
+                    } else if (licenseInput.value === 'Apache 2.0') {
+                        let chosenLicense = '/hexpm/l/:packageName';
+                        licenseMessage = 'http://www.apache.org/licenses/LICENSE-2.0'
+                        return true;
+                    } else if (licenseInput.value === 'MIT') {
+                        let chosenLicense = '/apm/l/:packageName'
+                        licenseMessage ='https://spdx.org/licenses/MIT.html'
+                        return true;
+                    } else {
+                       let chosenLicense = '/eclipse-marketplace/l/:name'
+                        licenseMessage ='https://spdx.org/licenses/GPL-3.0-or-later.html'
+                        return true;
+                    }
+                } else {
+                    console.log('Please select one of the four options')
+                    return false;
+                    }
             }
         },
         {
@@ -71,31 +99,102 @@ const questions = () => {
                     return false;
                 }
             }
-        }
+        },
+        {
+            type: 'input',
+            name: 'contributions',
+            message: 'What guidelines must others follow in order to contribute?',
+            validate: contributionsInput => {
+                if (contributionsInput) {
+                    return true;
+                } else {
+                    console.log('Please enter contribution guidelines');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'testing',
+            message: 'How do you test this project?',
+            validate: testingInput => {
+                if (testingInput) {
+                    return true;
+                } else {
+                    console.log('Please explain how to test this project');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'askMe',
+            message: 'What is your Github username so others can reach you for questions?',
+            validate: askMeInput => {
+                if (askMeInput) {
+                    return true;
+                } else {
+                    console.log('Please provide your username so others can reach out to you with questions');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is your email so there is another way to be reached for questions?',
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('Please provide an email');
+                    return false;
+                }
+            }
+        },
     ])
     .then(({
         title,
+        license,
+        chosenLicense,
         description,
         ToC,
         instilation,
-        usage
+        usage,
+        contributions,
+        testing,
+        askMe,
+        email
     })=> {
         const template =
         `
-    #Title:
-    ${title}
+    # Title: ${title}
 
-    ##Description:
-    ${description}
+    ## License:
+    <img src=https://img.shields.io/static/v1?label=<${chosenLicense}>&color=<green>
+    ### For license information, please visit ${licenseMessage}
 
-    ##Table of Contents:
-    ${ToC}
+    ## Description:
+    ### ${description}
+
+    ## Table of Contents:
+    ### ${ToC}
     
-    ##How To Install:
-    ${instilation}
+    ## How To Install:
+    ### ${instilation}
     
-    ##Usage:
-    ${usage}
+    ## Usage:
+    ### ${usage}
+
+    ##Contribution Guidelines
+    ### ${contributions}
+
+    ##How to Test
+    ### ${testing}
+
+    ##Ask Me
+    ### Send your questions to https://github.com/${askMe}
+    ### Or email me at ${email}
     `
 
     generateREADME(title, template);
