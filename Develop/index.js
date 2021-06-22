@@ -1,11 +1,9 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
-const inquirer = require("inquirer");
-//const generateMarkdown = require('./src/README-template')
-//const { writeFile } = require('./utils/generateMarkdown');
-
+const inquirer = require('inquirer');
+const { resolve } = require('path');
 // TODO: Create an array of questions for user input
-const questions = (chosenLicense) => {
+const questions = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -21,27 +19,13 @@ const questions = (chosenLicense) => {
             }
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'license',
             message: 'What license does your project use?',
-            choices: ['None', 'Apache 2.0', 'MIT', 'GNU GPL v3'],
-            validate: licenseInput = (chosenLicense) => {
+            choices: ['None', 'Apache 2.0', 'MIT', 'GPL v3.0'],
+            validate: licenseInput = () => {
                 if (licenseInput) {
-                    if (licenseInput.value === 'None') {
-                        return true;
-                    } else if (licenseInput.value === 'Apache 2.0') {
-                        let chosenLicense = '/hexpm/l/:packageName';
-                        licenseMessage = 'http://www.apache.org/licenses/LICENSE-2.0'
-                        return true;
-                    } else if (licenseInput.value === 'MIT') {
-                        let chosenLicense = '/apm/l/:packageName'
-                        licenseMessage ='https://spdx.org/licenses/MIT.html'
-                        return true;
-                    } else {
-                       let chosenLicense = '/eclipse-marketplace/l/:name'
-                        licenseMessage ='https://spdx.org/licenses/GPL-3.0-or-later.html'
-                        return true;
-                    }
+                    return true;
                 } else {
                     console.log('Please select one of the four options')
                     return false;
@@ -76,13 +60,13 @@ const questions = (chosenLicense) => {
         },
         {
             type: 'input',
-            name: 'instilation',
+            name: 'installation',
             message: 'What steps are needed to install your project?',
-            validate: instilationInput => {
-                if (instilationInput) {
+            validate: installationInput => {
+                if (installationInput) {
                     return true;
                 } else {
-                    console.log('Please provide instilation steps');
+                    console.log('Please provide installation steps');
                     return false;
                 }
             }
@@ -151,75 +135,31 @@ const questions = (chosenLicense) => {
                     return false;
                 }
             }
-        },
+        }
     ])
-    .then(({
-        title,
-        license,
-        chosenLicense,
-        description,
-        ToC,
-        instilation,
-        usage,
-        contributions,
-        testing,
-        askMe,
-        email
-    })=> {
-        const template =
-        `
-    # Title: ${title}
-
-    ## License:
-    <img src=https://img.shields.io/static/v1?label=<${chosenLicense}>&color=<green>
-    ### For license information, please visit ${licenseMessage}
-
-    ## Description:
-    ### ${description}
-
-    ## Table of Contents:
-    ### ${ToC}
-    
-    ## How To Install:
-    ### ${instilation}
-    
-    ## Usage:
-    ### ${usage}
-
-    ##Contribution Guidelines
-    ### ${contributions}
-
-    ##How to Test
-    ### ${testing}
-
-    ##Ask Me
-    ### Send your questions to https://github.com/${askMe}
-    ### Or email me at ${email}
-    `
-
-    generateREADME(title, template);
-    })
-
-    function generateREADME(fileName, data) {
-        fs.writeFile(`./README.md`, data, (err)=>{
-            if(err) {
-                console.log(err)
-            } else {
-                console.log('Your README.md has been generated!')
-            }
-        })
-    }
 }
 
-questions();
+// TODO: Create a function to write README file
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./README.md', fileContent, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'Your README.md has been generated'
+            });
+        });
+    });
+};
 
-/*
 // TODO: Create a function to initialize app
 function init() {
-
+    questions();
 }
 
 // Function call to initialize app
-init();
-
-*/
+init()
+    .then(pr);
