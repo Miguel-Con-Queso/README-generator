@@ -155,11 +155,14 @@ const writeFile = fileContent => {
     });
 };
 
+module.exports = questions
+
 // TODO: Create a function to initialize app
 function init() {
-    questions();
+    questions().then(function(response){
+        const template 
+    })
 }
 
 // Function call to initialize app
 init()
-    .then(pr);
