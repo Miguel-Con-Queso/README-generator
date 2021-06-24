@@ -1,8 +1,10 @@
-const index = require('../index')
+const fs = require('fs');
+const inquirer = require('inquirer');
+const index = require('../index.js');
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {
+function renderLicenseBadge(answer) {
   let badge = '';
   if(answer.license === 'MIT') {
       badge = '![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)'
@@ -17,7 +19,7 @@ function renderLicenseBadge(license) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {
+function renderLicenseLink(answer) {
   let licenseLink = '';
   if(answer.license === 'MIT') {
     licenseLink = 'https://choosealicense.com/licenses/mit/'
@@ -32,13 +34,13 @@ function renderLicenseLink(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license, badge, licenseLink) {
+function renderLicenseSection(answer, badge, licenseLink) {
   let licenseSection = ''
   if(answer.license === 'None') {
     licenseSection = ''
   } else {
     licenseSection =
-    `## License: ${answer.license}
+    `## License: ${license}
       ${badge}
       ${licenseLink}
     `
@@ -46,10 +48,14 @@ function renderLicenseSection(license, badge, licenseLink) {
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(licenseSection, data) {
-  return 
-  `
-  # ${data.title}
+function generateMarkdown(licenseSection, answer) {
+
+  renderLicenseBadge();
+  renderLicenseLink();
+  renderLicenseSection();
+
+  return`
+  # ${answer.title}
 
   ${licenseSection}
 
@@ -63,23 +69,23 @@ function generateMarkdown(licenseSection, data) {
 
   ## Installation:
   You must install the following for this app to function:
-  ${data.installations}
+  ${answer.installations}
 
   ## Usage:
-  ${data.usage}
+  ${answer.usage}
 
   ## Contributors:
-  ${data.contributions}
+  ${answer.contributions}
 
   ## Tests:
   Run the following commands in your terminal to test this app:
-  ${data.tests}
+  ${answer.tests}
 
   ## Questions:
   If you have any questions, you may contact me at either
-  https://github.com/${askMe}
+  https://github.com/${answer.askMe}
   or
-  ${email}
+  ${answer.email}
 `;
 }
 
