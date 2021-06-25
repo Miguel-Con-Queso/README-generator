@@ -21,15 +21,15 @@ function renderLicenseBadge(answer) {
 // If there is no license, return an empty string
 function renderLicenseLink(answer) {
   let licenseLink = '';
-  if(answer.license === 'MIT') {
-    licenseLink = 'https://choosealicense.com/licenses/mit/'
-  } else if (answer.license === 'Apache 2.0') {
-    licenseLink = 'http://www.apache.org/licenses/LICENSE-2.0'
-  } else if (answer.license === 'GPL v3.0') {
-    licenseLink = 'https://www.gnu.org/licenses'
-  } else {
-    licenseLink = ""
-  }
+    if(answer.license === 'MIT') {
+      licenseLink = 'https://choosealicense.com/licenses/mit/'
+    } else if (answer.license === 'Apache 2.0') {
+      licenseLink = 'http://www.apache.org/licenses/LICENSE-2.0'
+    } else if (answer.license === 'GPL v3.0') {
+      licenseLink = 'https://www.gnu.org/licenses'
+    } else {
+      licenseLink = ""
+    }
 }
 
 // TODO: Create a function that returns the license section of README

@@ -168,3 +168,5 @@ function init(answer) {
 
 // Function call to initialize app
 init();
+
+module.exports = questions;
