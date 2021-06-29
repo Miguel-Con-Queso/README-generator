@@ -4,60 +4,63 @@ const index = require('../index.js');
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(answer) {
+function renderLicenseBadge(license) {
   let badge = '';
-  if(answer.license === 'MIT') {
+  if(license === 'MIT') {
       badge = '![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)'
-  } else if (answer.license === 'Apache 2.0') {
+  } else if (license === 'Apache 2.0') {
       badge = '![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)'
-  } else if (answer.license === 'GPL v3.0') {
+  } else if (license === 'GPL v3.0') {
       badge = '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)'
   } else {
     badge = ""
   }
+  return badge;
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(answer) {
+function renderLicenseLink(license) {
   let licenseLink = '';
-    if(answer.license === 'MIT') {
+    if(license === 'MIT') {
       licenseLink = 'https://choosealicense.com/licenses/mit/'
-    } else if (answer.license === 'Apache 2.0') {
+    } else if (license === 'Apache 2.0') {
       licenseLink = 'http://www.apache.org/licenses/LICENSE-2.0'
-    } else if (answer.license === 'GPL v3.0') {
+    } else if (license === 'GPL v3.0') {
       licenseLink = 'https://www.gnu.org/licenses'
     } else {
       licenseLink = ""
     }
+    return licenseLink;
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(answer, badge, licenseLink) {
+function renderLicenseSection(license) {
   let licenseSection = ''
-  if(answer.license === 'None') {
+  if(license === 'None') {
     licenseSection = ''
   } else {
     licenseSection =
     `## License: ${license}
-      ${badge}
-      ${licenseLink}
+      ${renderLicenseBadge(license)}
+      ${renderLicenseLink(license)}
     `
   }
+  return licenseSection;
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(licenseSection, answer) {
+function generateMarkdown(answers) {
 
-  renderLicenseBadge();
+  /*renderLicenseBadge(answers.license);
   renderLicenseLink();
   renderLicenseSection();
-
+*/
   return`
-  # ${answer.title}
+  # ${answers.title}
 
-  ${licenseSection}
+  ${renderLicenseSection(answers.license)}
 
   ## Table of Contents:
     *[Installation](#instal)
@@ -69,23 +72,23 @@ function generateMarkdown(licenseSection, answer) {
 
   ## Installation:
   You must install the following for this app to function:
-  ${answer.installations}
+  ${answers.installations}
 
   ## Usage:
-  ${answer.usage}
+  ${answers.usage}
 
   ## Contributors:
-  ${answer.contributions}
+  ${answers.contributions}
 
   ## Tests:
   Run the following commands in your terminal to test this app:
-  ${answer.tests}
+  ${answers.tests}
 
   ## Questions:
   If you have any questions, you may contact me at either
-  https://github.com/${answer.askMe}
+  https://github.com/${answers.askMe}
   or
-  ${answer.email}
+  ${answers.email}
 `;
 }
 

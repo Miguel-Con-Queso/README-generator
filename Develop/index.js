@@ -161,6 +161,7 @@ const writeToFile = fileContent => {
 function init(answer) {
     inquirer.prompt(questions)
         .then(function(answer) {
+            console.log(answer)
         var fileContent = generateMarkdown(answer);
         writeToFile(fileContent)
         });
