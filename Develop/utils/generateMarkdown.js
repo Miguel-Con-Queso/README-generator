@@ -42,9 +42,9 @@ function renderLicenseSection(license) {
     licenseSection = ''
   } else {
     licenseSection =
-    `## License: ${license}
-     ### ${renderLicenseBadge(license)}
-     ### ${renderLicenseLink(license)}
+    `License: ${license}
+     ${renderLicenseBadge(license)}
+     ${renderLicenseLink(license)}
     `
   }
   return licenseSection;
@@ -56,15 +56,15 @@ function generateMarkdown(answer) {
   return`
   # ${answer.title}
 
-  ${renderLicenseSection(answer.license)}
+  ## ${renderLicenseSection(answer.license)}
 
   ## Table of Contents:
-    *[Installation](#installation)
-    *[Usage](#usage)
-    *[License](#license)
-    *[Contributors](#contributors)
-    *[Tests](#tests)
-    *[Questions](#questions)
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [License](#license)
+    * [Contributors](#contributors)
+    * [Tests](#tests)
+    * [Questions](#questions)
 
   ## Installation:
   You must install the following for this app to function:
