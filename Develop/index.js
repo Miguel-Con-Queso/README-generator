@@ -137,26 +137,23 @@ const writeToFile = fileContent => {
                 return;
             }
             resolve({
-                ok: true,
-                message: 'Your README.md has been generated'
+            ok: true,
+            message: 'Your README.md has been generated'
             });
         });
     });
 };
 
+
 // function to initialize app
 function init() {
     inquirer.prompt(questions)
         .then(function(answer) {
-<<<<<<< HEAD
-            console.log(answer)
-=======
             console.log(answer);
->>>>>>> 9344236b19a6dcf86be568a93541db850672f966
         var fileContent = generateMarkdown(answer);
         writeToFile(fileContent)
         });
-}
+};
 
 // Function call to initialize app
 init();
