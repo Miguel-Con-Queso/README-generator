@@ -1,9 +1,8 @@
 
   # README Generator
 
-  ## License: MIT ![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
-     ### https://choosealicense.com/licenses/mit/
-    
+  ## License: MIT  ![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
+  ### https://choosealicense.com/licenses/mit/
 
   ## Table of Contents:
   ###  * [Installation](#installation)
@@ -18,10 +17,10 @@
   undefined
 
   ## Usage:
-  It creates a README.md for you
+  It generates a README.md for you
 
   ## Contributors:
-  none. no worries
+  none, no worries
 
   ## Tests:
   Run the following commands in your terminal to test this app:
@@ -31,4 +30,4 @@
   If you have any questions, you may contact me at either
   Github: https://github.com/Miguel-Con-Queso
   or
-  Email: michael_pnkstn@yahoo.com
+  Email: michael_pnkstn

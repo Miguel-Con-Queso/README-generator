@@ -42,9 +42,7 @@ function renderLicenseSection(license) {
     licenseSection = ''
   } else {
     licenseSection =
-    `License: ${license} ${renderLicenseBadge(license)}
-     ### ${renderLicenseLink(license)}
-    `
+    `License: ${license} `
   }
   return licenseSection;
 }
@@ -55,7 +53,8 @@ function generateMarkdown(answer) {
   return`
   # ${answer.title}
 
-  ## ${renderLicenseSection(answer.license)}
+  ## ${renderLicenseSection(answer.license)} ${renderLicenseBadge(answer.license)}
+  ### ${renderLicenseLink(answer.license)}
 
   ## Table of Contents:
   ###  * [Installation](#installation)
