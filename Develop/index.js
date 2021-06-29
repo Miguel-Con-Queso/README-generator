@@ -86,7 +86,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'testing',
+        name: 'test',
         message: 'How do you test this project?',
         validate: testingInput => {
             if (testingInput) {
@@ -137,8 +137,7 @@ const writeToFile = fileContent => {
                 return;
             }
             resolve({
-                ok: true,
-                message: 'Your README.md has been generated'
+                ok: true
             });
         });
     });

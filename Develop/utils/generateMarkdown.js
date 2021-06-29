@@ -14,7 +14,7 @@ function renderLicenseBadge(license) {
   } else if (license === 'GPL v3.0') {
       badge = '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)'
   } else {
-    badge = ""
+    badge = ''
   }
   return badge;
 }
@@ -30,7 +30,7 @@ function renderLicenseLink(license) {
     } else if (license === 'GPL v3.0') {
       licenseLink = 'https://www.gnu.org/licenses'
     } else {
-      licenseLink = ""
+      licenseLink = ''
     }
     return licenseLink;
 }
@@ -58,32 +58,32 @@ function generateMarkdown(answer) {
   ### ${renderLicenseLink(answer.license)}
 
   ## Table of Contents:
+  ###  * [License](#license)
   ###  * [Installation](#installation)
   ###  * [Usage](#usage)
-  ###  * [License](#license)
   ###  * [Contributors](#contributors)
   ###  * [Tests](#tests)
   ###  * [Questions](#questions)
 
   ## Installation:
-  You must install the following for this app to function:
-  ${answer.installation}
+  ### You must install the following for this app to function:
+  ### ${answer.installation}
 
   ## Usage:
-  ${answer.usage}
+  ### ${answer.usage}
 
   ## Contributors:
-  ${answer.contributions}
+  ### ${answer.contributions}
 
   ## Tests:
-  Run the following commands in your terminal to test this app:
-  ${answer.tests}
+  ### Run the following commands in your terminal to test this app:
+  ### ${answer.test}
 
   ## Questions:
-  If you have any questions, you may contact me at either
-  Github: https://github.com/${answer.askMe}
-  or
-  Email: ${answer.email}
+  ### If you have any questions, you may contact me at either
+  ### Github: https://github.com/${answer.askMe}
+  ### or
+  ### Email: ${answer.email}
 `;
 }
 
