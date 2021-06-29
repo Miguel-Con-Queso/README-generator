@@ -59,12 +59,12 @@ function generateMarkdown(answer) {
   ## ${renderLicenseSection(answer.license)}
 
   ## Table of Contents:
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Contributors](#contributors)
-    * [Tests](#tests)
-    * [Questions](#questions)
+  ###  * [Installation](#installation)
+  ###  * [Usage](#usage)
+  ###  * [License](#license)
+  ###  * [Contributors](#contributors)
+  ###  * [Tests](#tests)
+  ###  * [Questions](#questions)
 
   ## Installation:
   You must install the following for this app to function:
