@@ -1,5 +1,5 @@
 
-  # a;lskdfj
+  # README Generator
 
   ## License: MIT  ![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
   ### https://choosealicense.com/licenses/mit/
@@ -14,20 +14,20 @@
 
   ## Installation:
   ### You must install the following for this app to function:
-  ### qiworefhjw;qiohjfgq
+  ### oa;sifhjasodfih
 
   ## Usage:
-  ### aq;owifha;orfhfq;oh
+  ### a[df;ouuahsdfoashdf
 
   ## Contributors:
-  ### qwofhqworehqworguh
+  ### woeaifhj
 
   ## Tests:
   ### Run the following commands in your terminal to test this app:
-  ### qowfhouwrhqw;hgf
+  ### ;owuierfyhaoswfh
 
   ## Questions:
   ### If you have any questions, you may contact me at either
-  ### Github: https://github.com/qowuirfhq;ourghfqo;wh
+  ### Github: https://github.com/Miguel-Con-Queso
   ### or
-  ### Email: woiu;fh;qouwhqw;uogfh
+  ### Email: defAReal@email.com
