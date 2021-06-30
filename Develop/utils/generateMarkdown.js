@@ -66,24 +66,24 @@ function generateMarkdown(answer) {
   ###  * [Questions](#questions)
 
   ## Installation:
-  You must install the following for this app to function:
-  ${answer.installation}
+  ### You must install the following for this app to function:
+  ### ${answer.installation}
 
   ## Usage:
-  ${answer.usage}
+  ### ${answer.usage}
 
   ## Contributors:
-  ${answer.contributions}
+  ### ${answer.contributions}
 
   ## Tests:
-  Run the following commands in your terminal to test this app:
-  ${answer.tests}
+  ### Run the following commands in your terminal to test this app:
+  ### ${answer.tests}
 
   ## Questions:
-  If you have any questions, you may contact me at either
-  Github: https://github.com/${answer.askMe}
-  or
-  Email: ${answer.email}
+  ### If you have any questions, you may contact me at either
+  ### Github: https://github.com/${answer.askMe}
+  ### or
+  ### Email: ${answer.email}
 `;
 }
 
